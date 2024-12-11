@@ -1,0 +1,270 @@
+{
+  "Uuid": "c68bf835-aec5-4d35-a2d8-228ddec0e73c",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "01-Few-Shot",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "Code": "# Input: IN[0] (List of numbers)\r\na = IN[0]\r\n\r\n# Initialize the output list\r\nb = []\r\n\r\n# Calculate the running total\r\nrunning_total = 0\r\nfor num in a:\r\n    running_total += num\r\n    b.append(running_total)\r\n\r\n# Output: OUT (List of running totals)\r\nOUT = b",
+      "Engine": "CPython3",
+      "EngineName": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "f41c6f9c355a4f3b8d1a198383cc939c",
+      "NodeType": "PythonScriptNode",
+      "Inputs": [
+        {
+          "Id": "2a4a391f977e44e6b09d13d7b660a85c",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b2fa203f95ae49f792e2406857e091ca",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Sequence, CoreNodeModels",
+      "Id": "f61cbd49675b48468722ae810b3accab",
+      "NodeType": "ExtensionNode",
+      "Inputs": [
+        {
+          "Id": "e4485ead32864108b72461082520edb1",
+          "Name": "start",
+          "Description": "Number or letter to start the sequence at\r\nDefault value: 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c7e8dee4aba04bfa8d87e9b799788b4b",
+          "Name": "amount",
+          "Description": "Amount of numbers or letters in the sequence\r\nDefault value: 10",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d491c8e5932140bbb7f1882c7e2ec19f",
+          "Name": "step",
+          "Description": "Space between numbers or letters\r\nDefault value: 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "75143c04b0a54b0788439f264c228c11",
+          "Name": "list",
+          "Description": "New list of type: var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Creates a sequence of numbers"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "WatchWidth": 200.0,
+      "WatchHeight": 200.0,
+      "Id": "d62437a5f3784cfb8d104158cb3e35c2",
+      "NodeType": "ExtensionNode",
+      "Inputs": [
+        {
+          "Id": "2a3b52d85c5a414db75b3d890566d086",
+          "Name": "",
+          "Description": "Node to show output from",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "6f19756306d14822a352bb76022f816c",
+          "Name": "",
+          "Description": "Node output",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualizes a node's output"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "WatchWidth": 200.0,
+      "WatchHeight": 200.0,
+      "Id": "0c4df4c5c77f400bb57379ae33cd0dd2",
+      "NodeType": "ExtensionNode",
+      "Inputs": [
+        {
+          "Id": "31869bcba41742e2affe06002a80a146",
+          "Name": "",
+          "Description": "Node to show output from",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "d3a88af38fa642c989d57ea611b31bdf",
+          "Name": "",
+          "Description": "Node output",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualizes a node's output"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "b2fa203f95ae49f792e2406857e091ca",
+      "End": "2a3b52d85c5a414db75b3d890566d086",
+      "Id": "252bbef5985c48e7b0fdf0e433a66264",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "75143c04b0a54b0788439f264c228c11",
+      "End": "2a4a391f977e44e6b09d13d7b660a85c",
+      "Id": "ca14101daa4f4a62b0c7d44cc07855d3",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "75143c04b0a54b0788439f264c228c11",
+      "End": "31869bcba41742e2affe06002a80a146",
+      "Id": "b3423d92ec6a4398a8c046cfb5c2650d",
+      "IsHidden": "False"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "2.19",
+      "Data": {}
+    },
+    {
+      "ExtensionGuid": "DFBD9CC0-DB40-457A-939E-8C8555555A9D",
+      "Name": "Generative Design",
+      "Version": "6.1",
+      "Data": {}
+    }
+  ],
+  "Author": "",
+  "Linting": {
+    "activeLinter": "None",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.19.3.6394",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "_Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "ConnectorPins": [],
+    "NodeViews": [
+      {
+        "Id": "f41c6f9c355a4f3b8d1a198383cc939c",
+        "Name": "Python Script",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 414.66666666666657,
+        "Y": 159.33333333333331
+      },
+      {
+        "Id": "f61cbd49675b48468722ae810b3accab",
+        "Name": "Sequence",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 166.66666666666674,
+        "Y": 159.00000000000003
+      },
+      {
+        "Id": "d62437a5f3784cfb8d104158cb3e35c2",
+        "Name": "Watch",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 647.33333333333326,
+        "Y": 157.33333333333329
+      },
+      {
+        "Id": "0c4df4c5c77f400bb57379ae33cd0dd2",
+        "Name": "Watch",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 331.33333333333348,
+        "Y": 402.33333333333331
+      }
+    ],
+    "Annotations": [],
+    "X": -36.216937848627708,
+    "Y": -113.26544830305932,
+    "Zoom": 0.95404292488281262
+  }
+}

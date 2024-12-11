@@ -1,0 +1,44 @@
+-Open the move-room script.
+
+-use #selection to make a few explanations
+
+-use @workspace to edit the script and add comments:
+@workspace I would like to add the comment "moved" to the Comment parameter after the tag has been moved
+
+-Use the icon "Apply in editor" to add the proposed code.
+
+"""
+
+import clr
+
+clr.AddReference('RevitAPI')
+clr.AddReference('RevitAPIUI')
+
+from Autodesk.Revit.DB import Transaction
+from Autodesk.Revit.DB import FilteredElementCollector, SpatialElementTag, BuiltInParameter
+
+uidoc = __revit__.ActiveUIDocument
+doc = __revit__.ActiveUIDocument.Document
+
+###########################################################################
+# TAG COLLECTOR [IN VIEW BY: doc.ActiveView.Id]
+room_tags = FilteredElementCollector(doc, doc.ActiveView.Id)\
+            .OfClass(SpatialElementTag).ToElements()
+###########################################################################
+
+transaction = Transaction(doc, 'Move Room Tags on Room Points')
+transaction.Start()
+for room_tag in room_tags:
+    room_tag_pt = room_tag.Location.Point
+    room = room_tag.Room
+    room_pt = room.Location.Point
+
+    translation = room_pt - room_tag_pt
+    room_tag.Location.Move(translation)
+
+    # Set the comment parameter to "moved"
+    comment_param = room_tag.get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS)
+    if comment_param:
+        comment_param.Set("moved")
+
+transaction.Commit()
